@@ -1,5 +1,5 @@
-$(function(){
-   $('.button').hover(function(){
-      $('.button').css('background-size','red');
-   })
-});
+$('.form').on({
+    mouseenter: function () {
+        $('.button').css('background','red');
+    }
+}, '.button')

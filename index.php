@@ -8,7 +8,7 @@
     </head>
 </header>
 <body>
-    <button class="but">saas</button>
+
 <?php include_once 'html/header.php'   ?>
 <div class="validate">
         <form  class="form" name = "validation">
@@ -16,8 +16,17 @@
             <input type="password" placeholder="password" class="password" name = "pass">
             <input type="submit" value="start" class="button" name = "button">
         </form>
+
 </div>
+<script>
+    $('.form').on({
+        mouseenter: function () {
+            $('.button').css('background','red');
+        }
+    }, '.button')
+</script>
 <?php include_once 'html/footer.php' ?>
-<script src="js/start.js"></script>
 </body>
+
+
 </htmL>
