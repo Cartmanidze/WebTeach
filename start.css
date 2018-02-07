@@ -1,3 +1,8 @@
+* body{
+    margin: 0;
+    background: darkgrey;
+}
+
 
 .head{
     margin: 1px 0px 0px;
@@ -20,6 +25,7 @@
 }
 
 .username  {
+    background-color: whitesmoke;
     position: relative;
     display: table;
     margin: auto;
@@ -28,10 +34,11 @@
     left:0;
     bottom: 0;
     border: none;
-    border-bottom: 2px groove black;
+    border-bottom: 2px groove darkgrey;
     outline:none;
  }
 .password  {
+    background-color: whitesmoke;
     position: relative;
     display: table;
     margin: auto;
@@ -40,13 +47,13 @@
     left:0;
     bottom:0;
     border: none;
-    border-bottom: 2px groove black;
+    border-bottom: 2px groove darkgrey;
     outline:none;
 }
 .button{
     background-color: darkgrey;
     position: relative;
-    width: 100px;
+    width: 150px;
     height: 50px;
     margin: auto;
     top: 250px;
@@ -57,5 +64,16 @@
     border-radius: 20px 20px 20px 20px ;
     display: block;
     outline:none;
-
+}
+.form-validate{
+    position: absolute;
+    background-color: whitesmoke;
+    width:300px;
+    height: 350px;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 20px 20px 20px 20px;
 }
