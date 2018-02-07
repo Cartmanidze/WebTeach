@@ -18,13 +18,7 @@
         </form>
 
 </div>
-<script>
-    $('.form').on({
-        mouseenter: function () {
-            $('.button').css('background','red');
-        }
-    }, '.button')
-</script>
+<script src="js/start.js"></script>
 <?php include_once 'html/footer.php' ?>
 </body>
 
