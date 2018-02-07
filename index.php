@@ -1,7 +1,7 @@
 <!doctype html>
 <htmL>
 <meta charset="UTF8">
-<title>WebTech</title>
+<title>WebTeach</title>
 <header>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="js/jquery/jquery.js" type="text/javascript"></script>
