@@ -1,6 +1,6 @@
 <?php
 
-class CheckUsers
+class checkUsers
 {
     public $users;
     public $password;
@@ -28,5 +28,5 @@ class CheckUsers
     }
 
 }
-$check = new CheckUsers();
+$check = new checkUsers();
 $check->check();
