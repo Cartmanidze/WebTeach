@@ -12,15 +12,15 @@
 <?php include_once 'html/header.php'   ?>
 <div class="validate">
     <div class ="form-validate">
-        <form class="form" action="validate/checkUsers.php" method = "post" name = "validation">
+        <form class="form"  name = "validation">
             <input type="text" placeholder="User Name" class="username" name = "user">
             <input type="password" placeholder="Password" class="password" name = "pass">
             <input type="submit" value="start" class="button" name = "button">
         </form>
 </div>
 </div>
-
 <script src="js/start.js"></script>
+<script src="js/validation.js"></script>
 <?php include_once 'html/footer.php' ?>
 </body>
 
