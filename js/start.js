@@ -11,7 +11,7 @@ $(document).ready(function () {
             $('.button').css('background','lightgrey');
             $('.button').css('transition','1s');
         }
-    }, '.button')
+    }, '.button');
 
     $('.form').on({
         click: function () {
@@ -34,6 +34,20 @@ $(document).ready(function () {
     $('.form').on('keyup', function(){
         $('.password').css('border-bottom','2px groove black');
     });
+
+    $('.form').on({
+        blur: function () {
+            if($('.username').val()!=='')
+            {
+                alert('поле заполнено');
+            }
+            else
+            {
+                alert('Поле неполнено');
+            }
+
+        }
+    }, '.username');
 
 
 });
