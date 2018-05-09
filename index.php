@@ -1,28 +1,17 @@
-<htmL>
-<meta charset="UTF8">
-<title>WebTeach</title>
-<header>
-    <head>
-       <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
-        <link rel="stylesheet" href="start.css" type="text/css">
-    </head>
-</header>
-<body>
-
-<?php include_once 'html/header.php'   ?>
-<div class="validate">
-    <div class ="form-validate">
-        <form class="form"  name = "validation">
-            <input type="text" placeholder="User Name" class="username" name = "user">
-            <input type="password" placeholder="Password" class="password" name = "pass">
-            <input type="submit" value="start" class="button" name = "button">
-        </form>
-</div>
-</div>
-<script src="js/start.js"></script>
-<script src="js/validation.js"></script>
-<?php include_once 'html/footer.php' ?>
-</body>
+<?php
 
 
-</htmL>
+//FRONT CONTROLLER
+//1. All settings
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+session_start();
+//2.Include file system
+define('ROOT',dirname(__FILE__));
+
+//3.Connect data base
+require_once (ROOT.'/components/Autoload.php');
+
+//4.Call router
+$router = new Router();
+$router->run();
