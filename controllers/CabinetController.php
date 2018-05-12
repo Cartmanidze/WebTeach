@@ -3,10 +3,10 @@
 /**
  * Created by PhpStorm.
  * User: ElliotAnderson
- * Date: 08.02.2018
- * Time: 8:39
+ * Date: 11.05.2018
+ * Time: 5:04
  */
-class dbConnect
+class CabinetController
 {
 
 }
