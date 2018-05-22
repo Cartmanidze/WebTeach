@@ -3,7 +3,7 @@
         <div class="category">
             <?php foreach ($categories as $category): ?>
                 <div class="category_panel">
-                    <h4><a href="/test/<?php echo $category['id_category']?>"><?php echo $category['name'];?></a></h4>
+                    <h4><a href="/test/<?php echo $category['id_category']?>/page-1"><?php echo $category['name'];?></a></h4>
                 </div>
         </div>
     <?php endforeach;?>

@@ -36,7 +36,7 @@ class Test
             $show = self::SHOW_BY_DEFAULT;
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
             $db = Db::getConnection();
-            $sql = ("SELECT id_test,question,answer_first,answer_second FROM test WHERE id_category=:id_category ORDER BY id_test ASC LIMIT :show  OFFSET :offset");
+            $sql = ("SELECT id_category,id_test,question,answer_first,answer_second FROM test WHERE id_category=:id_category ORDER BY id_test ASC LIMIT :show  OFFSET :offset");
             $result =  $db->prepare($sql);
             $result->bindParam(":id_category",$categoryId,PDO::PARAM_INT);
             $result->bindParam(":show",$show,PDO::PARAM_INT);
@@ -46,6 +46,7 @@ class Test
             $i = 0;
             while ($row = $result->fetch(PDO::FETCH_BOTH)) {
                 $tests[$i]['id_test'] = $row['id_test'];
+                $tests[$i]['id_category'] = $row['id_category'];
                 $tests[$i]['question'] = $row['question'];
                 $tests[$i]['answer_first'] = $row['answer_first'];
                 $tests[$i]['answer_second'] = $row['answer_second'];
@@ -55,11 +56,14 @@ class Test
 
         }
     }
-    public static function getTestList()
+    public static function getTestList($id_category)
     {
         $db = Db::getConnection();
         $testList = array();
-        $result = $db->query("SELECT id_category,id_test FROM test");
+        $sql = "SELECT id_category,id_test FROM test WHERE id_category=:id_category";
+        $result =  $db->prepare($sql);
+        $result->bindParam(":id_category",$id_category,PDO::PARAM_INT);
+        $result->execute();
         $i = 0;
         while ($row =  $result->fetch(PDO::FETCH_BOTH))
         {
@@ -93,5 +97,32 @@ class Test
         $row = $result->fetch(PDO::FETCH_ASSOC);
         return $row['count'];
     }
+    public static function getNubmerPage()
+    {
+        $uri = $_SERVER['REQUEST_URI'];
+        $uriArray = explode('-',$uri);
+        $numberPage = $uriArray[1];
+        return $numberPage;
+    }
+
+    public static function getRightAnswer($test_id)
+    {
+        $db = Db::getConnection();
+        $answerList = array();
+        $sql = "SELECT title FROM answer WHERE id_test = :id_test AND status = '1'";
+        $result = $db->prepare($sql);
+        $result->bindParam(":id_test",$test_id,PDO::PARAM_INT);
+        $result->execute();
+        $i=0;
+        while($row = $result->fetch(PDO::FETCH_BOTH))
+        {
+            $answerList[$i]['title'] = $row['title'];
+            $i++;
+        }
+        return $answerList;
+
+    }
+
+
 
 }
