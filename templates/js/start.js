@@ -36,18 +36,14 @@ $(document).ready(function () {
         }
     }, '.username');
 
-    // if($(''.pagination li:last-child).attr('class')==='active')
-    // {
-    //     $('.button_test').css('display','block');
-    // }
+
+    $(".check").change(function() {
+        if(this.checked) {
+            $('.button_test').css('display','block');
+        }
 
 
-    $('.button-large').click(clickPrev);
-
-    function clickPrev(){
-        alert(1);
-        $('.pagination li:last-child a, .pagination li:last-child span').trigger('click');
-    };
+    })
 
 
 });

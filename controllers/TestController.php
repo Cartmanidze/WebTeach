@@ -12,42 +12,60 @@ class TestController
     {
         $categories = array();
         $categories = Category::getCategoryList();
-        require_once (ROOT . '/views/test/index.php');
+        require_once(ROOT . '/views/test/index.php');
         return true;
     }
-    public function actionView($id,$page = 1)
+
+    public function actionView($id,$idTest, $page = 1)
     {
+        $numberId = Test::getNumberId();
+        $itemAnswer = '';
+        $testItem = '';
+        $testItemRight = '';
         $tests = array();
         $count = 0;
-        $tests = Test::getTestListByCategory($id,$page);
+        $tests = Test::getTestListByCategory($id, $page);
+        $testsRight = array();
+        $testsRight = Test::getTestById($numberId);
+
+        if(isset($testsRight)) {
+            foreach ($testsRight as $itemRight) {
+                $testItemRight = Test::jsonDecodeAnswerRight($itemRight);
+                $testItemRight = trim($testItemRight);
+            }
+        }
         $total = Test::getTotalTestInCategory($id);
-        $pagination = new Pagination($total,$page,Test::SHOW_BY_DEFAULT,'page-');
-        $numberPage = Test::getNubmerPage();
-        if(isset($_POST['submit']))
-            {
-                $rightAnswers = Test::getRightAnswer($numberPage -1 );
-                 $checkAnswers = $_POST['answer'];
-
-                foreach ($rightAnswers as $rightAnswer)
-                    {
-                foreach ($checkAnswers as $checkAnswer)
-                {
-
-                    if($checkAnswer == $rightAnswer['title'])
-                    {
-                        $count++;
-                       $_SESSION['count_answer'] = $count;
-                    }
+        $pagination = new Pagination($total, $page, Test::SHOW_BY_DEFAULT, 'page-');
+        $numberPage = Test::getNumberPage();
+        foreach ($tests as $test) {
+            $testItem .= Test::jsonDecodeAnswer($test);
+            $testItem = trim($testItem);
 
         }
-    }
-}
+        $testAnswerArrayRight = (explode(' ', $testItemRight));
+        $testAnswerArray = explode(' ', $testItem);
+        $select = '';
+        if (isset($_POST['submit'])) {
+            $selectAnswers = $_POST['answer'];
+               foreach ($selectAnswers as $selectAnswer)
+               {
+                   $select .=' ' . $selectAnswer;
+               }
+               $select =trim($select);
+                if ($select == $testItemRight) {
+                    $count++;
+                    $_SESSION['count_answer'] += $count;
+                }
+        }
         require_once(ROOT. '/views/test/view.php');
         return true;
-
     }
-
-
-
-
 }
+
+
+
+
+
+
+
+

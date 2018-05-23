@@ -14,17 +14,14 @@ class Test
         if($id)
         {
             $db = Db::getConnection();
-            $sql = "SELECT * FROM test WHERE id_test = :id_test";
+            $sql = "SELECT answer FROM test WHERE id_test = :id_test";
             $result = $db->prepare($sql);
             $result->bindParam(":id_test",$id,PDO::PARAM_INT);
             $result->execute();
             $tests = array();
             $i = 0;
             while ($row = $result->fetch(PDO::FETCH_BOTH)) {
-                $tests[$i]['id_test'] = $row['id_test'];
-                $tests[$i]['question'] = $row['question'];
-                $tests[$i]['answer_first'] = $row['answer_first'];
-                $tests[$i]['answer_second'] = $row['answer_second'];
+                $tests[$i]['answer'] = json_decode($row['answer']);
                 $i++;
             }
             return $tests;
@@ -36,7 +33,7 @@ class Test
             $show = self::SHOW_BY_DEFAULT;
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
             $db = Db::getConnection();
-            $sql = ("SELECT id_category,id_test,question,answer_first,answer_second FROM test WHERE id_category=:id_category ORDER BY id_test ASC LIMIT :show  OFFSET :offset");
+            $sql = ("SELECT id_category,id_test,question,answer FROM test WHERE id_category=:id_category ORDER BY id_test ASC LIMIT :show  OFFSET :offset");
             $result =  $db->prepare($sql);
             $result->bindParam(":id_category",$categoryId,PDO::PARAM_INT);
             $result->bindParam(":show",$show,PDO::PARAM_INT);
@@ -48,8 +45,7 @@ class Test
                 $tests[$i]['id_test'] = $row['id_test'];
                 $tests[$i]['id_category'] = $row['id_category'];
                 $tests[$i]['question'] = $row['question'];
-                $tests[$i]['answer_first'] = $row['answer_first'];
-                $tests[$i]['answer_second'] = $row['answer_second'];
+                $tests[$i]['answer'] = json_decode($row['answer']);
                 $i++;
             }
             return $tests;
@@ -97,11 +93,18 @@ class Test
         $row = $result->fetch(PDO::FETCH_ASSOC);
         return $row['count'];
     }
-    public static function getNubmerPage()
+    public static function getNumberPage()
     {
         $uri = $_SERVER['REQUEST_URI'];
         $uriArray = explode('-',$uri);
         $numberPage = $uriArray[1];
+        return $numberPage;
+    }
+    public static function getNumberId()
+    {
+        $uri = $_SERVER['REQUEST_URI'];
+        $uriArray = explode('/',$uri);
+        $numberPage = $uriArray[3];
         return $numberPage;
     }
 
@@ -121,6 +124,38 @@ class Test
         }
         return $answerList;
 
+    }
+    public static function countTestNull()
+    {
+        if($_SESSION['count_answer']>0)
+        {
+            $_SESSION['count_answer'] = 0;
+        }
+        return $_SESSION['count_answer'];
+    }
+
+    public static function jsonDecodeAnswerRight($test)
+    {
+        $itemAnswer = '';
+        $array = json_decode(json_encode($test['answer']), True);
+        foreach ($array as $item)
+        {
+            if($item['status']=='1')
+            {
+            $itemAnswer .= ' '.  $item['title'];
+            }
+        }
+        return $itemAnswer;
+    }
+    public static function jsonDecodeAnswer($test)
+    {
+        $itemAnswer = ' ';
+        $array = json_decode(json_encode($test['answer']), True);
+        foreach ($array as $item)
+        {
+                $itemAnswer .= ' '.  $item['title'];
+        }
+        return $itemAnswer;
     }
 
 
