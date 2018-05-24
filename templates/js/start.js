@@ -41,9 +41,8 @@ $(document).ready(function () {
         if(this.checked) {
             $('.button_test').css('display','block');
         }
-
-
     })
+
 
 
 });

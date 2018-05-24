@@ -22,6 +22,7 @@ class TestController
         $itemAnswer = '';
         $testItem = '';
         $testItemRight = '';
+        $select = '';
         $tests = array();
         $count = 0;
         $tests = Test::getTestListByCategory($id, $page);
@@ -40,11 +41,8 @@ class TestController
         foreach ($tests as $test) {
             $testItem .= Test::jsonDecodeAnswer($test);
             $testItem = trim($testItem);
-
         }
-        $testAnswerArrayRight = (explode(' ', $testItemRight));
-        $testAnswerArray = explode(' ', $testItem);
-        $select = '';
+
         if (isset($_POST['submit'])) {
             $selectAnswers = $_POST['answer'];
                foreach ($selectAnswers as $selectAnswer)
@@ -57,6 +55,8 @@ class TestController
                     $_SESSION['count_answer'] += $count;
                 }
         }
+        $testAnswerArrayRight = (explode(' ', $testItemRight));
+        $testAnswerArray = explode(' ', $testItem);
         require_once(ROOT. '/views/test/view.php');
         return true;
     }
