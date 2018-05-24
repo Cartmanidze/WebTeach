@@ -1,7 +1,7 @@
 <?php
 return array(
-    'test/([0-9]+)/([0-9])+/page-([0-9]+)'=>'test/view/$1/$2/$3',
-    'test/([0-9]+)/page-([0-9]+)'=>'test/view/$1/$2',
+    'test/([0-9]+)/([0-9])+/question-([0-9]+)'=>'test/view/$1/$2/$3',
+    'test/([0-9]+)/question-([0-9]+)'=>'test/view/$1/$2',
     'course/header-([0-9]+)'=>'course/course/$1',
     'course/([0-9]+)'=>'course/header/$1',
     'course'=>'course/index',

@@ -93,6 +93,7 @@ class User
     public static function authentication($user_Id)
     {
         $_SESSION['user'] = $user_Id;
+        $_SESSION['count_answer'] = 0;
     }
     public static function checkLogger()
     {

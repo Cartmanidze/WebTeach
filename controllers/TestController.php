@@ -28,7 +28,7 @@ class TestController
         $tests = Test::getTestListByCategory($id, $page);
         $testsRight = array();
         $testsRight = Test::getTestById($numberId);
-
+        $userID = User::checkLogger();
         if(isset($testsRight)) {
             foreach ($testsRight as $itemRight) {
                 $testItemRight = Test::jsonDecodeAnswerRight($itemRight);
@@ -36,7 +36,7 @@ class TestController
             }
         }
         $total = Test::getTotalTestInCategory($id);
-        $pagination = new Pagination($total, $page, Test::SHOW_BY_DEFAULT, 'page-');
+        $pagination = new Pagination($total, $page, Test::SHOW_BY_DEFAULT, 'question-');
         $numberPage = Test::getNumberPage();
         foreach ($tests as $test) {
             $testItem .= Test::jsonDecodeAnswer($test);

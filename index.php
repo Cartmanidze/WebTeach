@@ -15,3 +15,5 @@ require_once (ROOT.'/components/Autoload.php');
 //4.Call router
 $router = new Router();
 $router->run();
+Test::checkCountAnswer();
+

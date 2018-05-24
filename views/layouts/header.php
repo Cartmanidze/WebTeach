@@ -8,7 +8,7 @@
 </header>
 <div class="header-menu">
     <h2><a href="/">WebTeach</a></h2>
-    <?php if($_SERVER['REQUEST_URI']!='/user/login' && $_SERVER['REQUEST_URI']!='/user/register'):?>
+    <?php if(!User::isGuest()):?>
             <ul>
         <li><a href="/course">Курсы</a></li>
         <li><a href="/test">Тесты</a></li>
@@ -16,7 +16,7 @@
     </ul>
     <?php else:?>
         <ul>
-            <li><a href="/user/login">Войти</a></li>
+            <li><a href="/user/login/">Войти</a></li>
             <li><a href="/user/register">Регистрация</a></li>
         </ul>
 

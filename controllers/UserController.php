@@ -21,7 +21,7 @@ public function actionLogin()
                 {
                     $errors[] = 'Пароль не должен быть меньше 6 символов';
                 }
-                $userID = User::testUserData($email,$password);
+                $userID = User::testUserData($email,md5($password));
                 if($userID == false)
                 {
                     $errors[] = 'Неправльный данные для входа на сайт';
@@ -62,15 +62,16 @@ public function actionRegister()
             }
             if(User::testPassword($password) == false)
             {
-                $errors[] = 'Парол должен иметь более 6 символов';
+                $errors[] = 'Пароль должен иметь более 6 символов';
             }
             if(User::testEmailExists($email) == true)
             {
                 $errors[] = 'Такой E-Mail уже существует';
             }
+
             if($errors == false)
             {
-               $result =  User::registration($name,$email,$password,$group);
+               $result =  User::registration($name,$email,md5($password),$group);
                 header("Location: /");
             }
         }

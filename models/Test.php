@@ -159,6 +159,34 @@ class Test
         }
         return $itemAnswer;
     }
+    public static function percentResult($count,$total)
+    {
+        $percent = ($count/$total)*100;
+        return $percent;
+    }
+    public static function checkCountAnswer()
+    {
+        $server =  $_SERVER['REQUEST_URI'];
+        $serverPage = explode('/',$server);
+
+        if($serverPage[3] == 'question-1')
+        {
+            $_SESSION['count_answer'] = 0;
+        }
+    }
+    public static function addStatistic($id_user,$id_test,$percent)
+    {
+
+        $dbConnect = Db::getConnection();
+        $query = ('INSERT INTO statistic_test (id_user, id_test, percent) VALUES (:id_user, :id_test, :percent)');
+        $result = $dbConnect->prepare($query);
+        $result->bindParam(':id_user',$id_user,PDO::PARAM_STR);
+        $result->bindParam(':id_test',$id_test,PDO::PARAM_STR);
+        $result->bindParam(':percent',$percent,PDO::PARAM_STR);
+        return $result->execute();
+
+    }
+
 
 
 

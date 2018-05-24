@@ -146,6 +146,17 @@ section{
     display: block;
     outline:none;
 }
+.password_recovery
+{
+    display: block;
+    position: relative;
+    margin: auto;
+    top: 340px;
+    right: 0;
+    left: 176px;
+    bottom: 0;
+    outline:none;
+}
 
 .list_answer{
     display: inline;
