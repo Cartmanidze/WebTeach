@@ -11,4 +11,5 @@ return array(
     'category/([0-9]+)'=>'catalog/category/$1',
     'user/login'=>'user/login',// actionLogin в UserController
     'user/register'=>'user/register',
+    'user/recovery'=>'user/recovery',
     ''=>'site/index');

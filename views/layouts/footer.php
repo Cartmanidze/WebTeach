@@ -11,5 +11,22 @@
 </footer>
 </body>
 <script src="/templates/js/start.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.password_recovery').click(function () {
+            $('.form p').html('Введите E-mail для отправки пароля на почту');
+            $('.password').css('display','none');
+            $('.button').css('display','none');
+            $('#button').css('display','block');
+        });
+        $('#button').click(function () {
+            $.post('/user/recovery/',{},function () {
+                alert('Письмо отправлено');
+                return true;
+            });
+            return false;
+        });
 
+    })
+</script>
 

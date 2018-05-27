@@ -19,7 +19,7 @@
                 <input type="password" placeholder="Пароль" class="password" name = "password">
                 <input type="text" placeholder="Группа" class="group" name = "group">
                 <input type="email" placeholder="E-Mail" class="email" name = "email">
-                <input type="submit" value="Регистрация" class="button" name = "button">
+                <input type="submit" value="Регистрация" class="button" name = "button" >
             </form>
             <?php endif; ?>
         </div>

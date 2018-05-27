@@ -78,5 +78,17 @@ public function actionRegister()
         require_once ROOT . '/views/user/register.php';
         return true;
     }
+    public function actionRecovery()
+    {
+        if(isset($_POST['submit']))
+        {
+            echo 1;
+            $subject = 'Пароль от webteach';
+            $to = $_POST['email'];
+            $message = 'Ваш пароль:147258369';
+            mail($to,$subject,$message);
+        }
+        return true;
+    }
 
 }

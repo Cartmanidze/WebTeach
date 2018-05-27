@@ -12,10 +12,12 @@
     <?php endif; ?>
     <div class ="form-validate">
         <form class="form"  method="post" action=""  name = "validation">
+            <p></p>
             <input type="email" placeholder="E-Mail" class="username" name = "email">
             <input type="password" placeholder="Пароль" class="password" name = "password">
             <input type="submit" value="Вход" class="button" name = "button">
-            <a href="" class="password_recovery">Забыли пароль?</a>
+            <input type="submit" value="Отправить"  name = "submit" id="button" style="display: none">
+            <a href="#" class="password_recovery">Забыли пароль?</a>
         </form>
 
 </div>

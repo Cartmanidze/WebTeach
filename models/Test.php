@@ -168,10 +168,12 @@ class Test
     {
         $server =  $_SERVER['REQUEST_URI'];
         $serverPage = explode('/',$server);
-
+        if(isset($serverPage[3]))
+        {
         if($serverPage[3] == 'question-1')
         {
             $_SESSION['count_answer'] = 0;
+        }
         }
     }
     public static function addStatistic($id_user,$id_test,$percent)
