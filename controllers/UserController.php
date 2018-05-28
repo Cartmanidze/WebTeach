@@ -80,14 +80,16 @@ public function actionRegister()
     }
     public function actionRecovery()
     {
-        if(isset($_POST['submit']))
-        {
-            echo 1;
-            $subject = 'Пароль от webteach';
-            $to = $_POST['email'];
-            $message = 'Ваш пароль:147258369';
-            mail($to,$subject,$message);
-        }
+            $email = $_POST['email'];
+            $checkEmail = User::testEmailData($email);
+            if($checkEmail) {
+                $subject = 'Пароль от webteach';
+                $password = User::generatePassword(8);
+                $message = 'Ваш пароль:' . $password;
+                mail($email, $subject, $message);
+                $passwordMD5 = md5($password);
+                User::updatePassword($passwordMD5,$email);
+            }
         return true;
     }
 

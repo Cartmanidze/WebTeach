@@ -135,4 +135,40 @@ class User
         $result->bindParam(":password",$password,PDO::PARAM_INT);
         return $result->execute();
     }
+    public static function generatePassword($length = 8)
+    {
+    $symbols = 'abdefhiknrstyzABDEFGHKNQRSTYZ23456789';
+    $numSymbols = strlen($symbols);
+    $string = '';
+    for ($i = 0; $i < $length; $i++)
+    {
+        $string .= substr($symbols, rand(1, $numSymbols) - 1, 1);
+    }
+    return $string;
+    }
+    public static function testEmailData($email)
+    {
+        $dbConnection = Db::getConnection();
+        $query = "SELECT * FROM users WHERE email=:email";
+        $result = $dbConnection->prepare($query);
+        $result->bindParam(':email',$email,PDO::PARAM_INT);
+        $result->execute();
+        $user = $result->fetch();
+        if($user)
+        {
+            return true;
+        }
+        return false;
+    }
+    public static function updatePassword($password,$email)
+    {
+        $db = Db::getConnection();
+        $sql = "UPDATE users SET password = :password WHERE email = :email";
+        $result = $db->prepare($sql);
+        $result->bindParam(":email",$email,PDO::PARAM_INT);
+        $result->bindParam(":password",$password,PDO::PARAM_INT);
+        return $result->execute();
+
+    }
+
 }

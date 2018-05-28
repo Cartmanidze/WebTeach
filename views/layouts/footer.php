@@ -20,9 +20,14 @@
             $('#button').css('display','block');
         });
         $('#button').click(function () {
-            $.post('/user/recovery/',{},function () {
-                alert('Письмо отправлено');
-                return true;
+            var form_data = $('.form').serialize();
+            $.ajax({
+                type: "POST",
+                url: "/user/recovery/",
+                data: form_data,
+                success: function() {
+                    alert("Ваше сообщение отпрвлено!");
+                } // забыли закрыть success
             });
             return false;
         });
