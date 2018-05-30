@@ -5,7 +5,10 @@ return array(
     'course/header-([0-9]+)'=>'course/course/$1',
     'course/([0-9]+)'=>'course/header/$1',
     'course'=>'course/index',
+    'task/view'=>'task/view',
+    'task/send'=>'task/send',
     'test'=>'test/index',
+    'task'=>'task/index',
     'catalog'=>'catalog/index',
     'category/([0-9]+)/page-([0-9]+)'=>'catalog/category/$1/$2',//actionCategory в CatalogController
     'category/([0-9]+)'=>'catalog/category/$1',

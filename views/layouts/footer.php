@@ -1,7 +1,5 @@
 <footer>
     <div class="footer">
-    <div class="foot">
-    </div>
     <ul>
         <li>© 2018 WebTeach</li>
         <li><a href="/about">О нас</a></li>
@@ -11,6 +9,7 @@
 </footer>
 </body>
 <script src="/templates/js/start.js"></script>
+<script src="/templates/js/sendOnServer.js"></script>
 <script>
     $(document).ready(function () {
         $('.password_recovery').click(function () {
@@ -18,6 +17,7 @@
             $('.password').css('display','none');
             $('.button').css('display','none');
             $('#button').css('display','block');
+            $('.password_recovery').css('display','none');
         });
         $('#button').click(function () {
             var form_data = $('.form').serialize();

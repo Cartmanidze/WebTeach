@@ -13,6 +13,7 @@
         <li><a href="/course">Курсы</a></li>
         <li><a href="/test">Тесты</a></li>
         <li><a href="/task">Задания</a></li>
+        <li><a href="/task">Личный кабинет</a></li>
     </ul>
     <?php else:?>
         <ul>

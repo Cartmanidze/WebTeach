@@ -8,5 +8,9 @@
  */
 class Cabinet
 {
+    public function getStatisticByID($id)
+    {
+
+    }
 
 }

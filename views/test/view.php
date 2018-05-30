@@ -1,9 +1,9 @@
 <?php include_once ROOT.'\views\layouts\header.php';?>
 <section>
-    <div class="category">
+    <div class="test">
         <?php if($numberPage<=$total):?>
         <?php foreach ($tests as $test): ?>
-        <div class="category_panel">
+        <div class="test_panel">
             <h5><?php echo $test['question']?></h5>
             <form action="/test/<?php echo $test['id_category'];?>/<?php echo $test['id_test'];?>/question-<?php echo $numberPage+1; ?>" method="post" class="test">
                 <?php if(isset($test['code'])):?>
@@ -31,6 +31,7 @@
             <?php $result = $_SESSION['count_answer']; ?>
             <p> Правильных ответов:<?php echo $result;?> из <?php echo $total;?> </p>
             <p> Результат:<?php echo $percent = Test::percentResult($result,$total);?>% </p>
+            <button class="button_test"><a href="/test">Вернуться к тестам</a></button>
             <?php Test::addStatistic($userID,$numberId,$percent); ?>
 
         </div>

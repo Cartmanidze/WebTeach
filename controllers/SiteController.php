@@ -4,7 +4,7 @@ class SiteController
 {
     public function actionIndex()
     {
-        $categorys = Category::getCategoryList();
+        $categories = Category::getCategoryList();
         require_once (ROOT . '/views/site/index.php');
         return true;
     }

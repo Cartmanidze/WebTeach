@@ -8,5 +8,9 @@
  */
 class CabinetController
 {
+    public function actionIndex()
+    {
+
+    }
 
 }

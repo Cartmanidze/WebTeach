@@ -8,5 +8,9 @@
  */
 class Task
 {
+    public static function getTaskByID($id)
+    {
+
+    }
 
 }

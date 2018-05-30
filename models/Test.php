@@ -34,7 +34,8 @@ class Test
             $show = self::SHOW_BY_DEFAULT;
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
             $db = Db::getConnection();
-            $sql = ("SELECT id_category,id_test,question,answer,code FROM test WHERE id_category=:id_category ORDER BY id_test ASC LIMIT :show  OFFSET :offset");
+            $sql = ("SELECT id_category,id_test,question,answer,code FROM test WHERE id_category=:id_category 
+                     ORDER BY id_test ASC LIMIT :show  OFFSET :offset");
             $result =  $db->prepare($sql);
             $result->bindParam(":id_category",$categoryId,PDO::PARAM_INT);
             $result->bindParam(":show",$show,PDO::PARAM_INT);

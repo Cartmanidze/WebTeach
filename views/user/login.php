@@ -16,7 +16,7 @@
             <input type="email" placeholder="E-Mail" class="username" name = "email">
             <input type="password" placeholder="Пароль" class="password" name = "password">
             <input type="submit" value="Вход" class="button" name = "button">
-            <input type="submit" value="Отправить"  name = "submit" id="button" style="display: none">
+            <input type="submit" value="Отправить" class="button"  name = "submit" id="button" style="display: none">
             <a href="#" class="password_recovery">Забыли пароль?</a>
         </form>
 

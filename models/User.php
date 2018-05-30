@@ -20,42 +20,29 @@ class User
         return $result->execute();
 
     }
-    public static function testName($name)
-    {
+    public static function testName($name){
         $minLength = 2;
-        if(strlen($name)>=$minLength)
-        {
+        if(strlen($name)>=$minLength) {
             return true;
         }
-        else
-        {
+        else {
             return false;
         }
     }
-
-    public static function testPassword($password)
-    {
+    public static function testPassword($password){
         $min = 6;
-        if(strlen($password)>=$min)
-        {
+        if(strlen($password)>=$min) {
             return true;
         }
-        else
-        {
+        else {
          return false;
         }
-
-
     }
-
-    public static function testEmail($email)
-    {
-        if(filter_var($email,FILTER_VALIDATE_EMAIL))
-        {
+    public static function testEmail($email){
+        if(filter_var($email,FILTER_VALIDATE_EMAIL)) {
             return true;
         }
-        else
-        {
+        else {
             return false;
         }
 
